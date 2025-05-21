@@ -205,6 +205,7 @@ const isAnyButtonActive = computed(() => {
   &__buttons {
     display: flex;
     gap: 12px;
+    color: #000000;
   }
 
   &__buttons-button {

@@ -33,6 +33,7 @@
   flex-direction: column;
   align-items: end;
   gap: 12px;
+  color: black;
 }
 
 .modal-button {
