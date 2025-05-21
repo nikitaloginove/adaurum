@@ -173,6 +173,19 @@ function getCurrentDateTime() {
 async function handleOrderMediaPlan() {
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
+  messages.value.push({
+    text: 'Запрос на медиаплан',
+    author: 'Jim',
+    time: getCurrentTime(),
+  })
+
+  const responseText = await backendResponse('Медиаплан загружен')
+  messages.value.push({
+    text: responseText,
+    author: 'Bot',
+    time: getCurrentTime(),
+  })
+
   showMediaPlan.value = true
   emit('change-active', 'mediaPlan')
   showSidebar.value = true
@@ -180,6 +193,19 @@ async function handleOrderMediaPlan() {
 
 async function handleOrderReports() {
   await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  messages.value.push({
+    text: 'Запрос на отчет',
+    author: 'Jim',
+    time: getCurrentTime(),
+  })
+
+  const responseText = await backendResponse('Отчет загружен')
+  messages.value.push({
+    text: responseText,
+    author: 'Bot',
+    time: getCurrentTime(),
+  })
 
   showReports.value = true
   emit('change-active', 'reports')
@@ -245,7 +271,6 @@ function handleClickOutside(event) {
     width: 40px;
     height: 40px;
     border: none;
-    // background-color: #f5f5f5;
     border-radius: 53px;
     cursor: pointer;
     grid-row: 1;
@@ -419,6 +444,13 @@ function handleClickOutside(event) {
     border-radius: 21px;
     cursor: pointer;
     color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 100%;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
 
     &.button-blue {
       width: 151px;
@@ -509,14 +541,9 @@ function handleClickOutside(event) {
     @media screen and (max-width: 767px) {
       position: fixed;
       min-height: 715px;
-      // top: 50%;
-      // left: 50%;
       z-index: 1000;
-      // transform: translate(-50%, -50%) translateX(-100%);
       transform: translateX(-100%);
-      // transition: transform 0.3s ease;
       &.show {
-        // transform: translate(-50%, -50%) translateX(0);
         transform: translateX(0);
       }
     }
